@@ -24,7 +24,7 @@ qt_cc_library(
 )
 
 qt_cc_binary(
-    name = "lab2_copy",
+    name = "lab2",
     srcs = ["main.cpp"],
     deps = [
         ":raycaster_lib",
