@@ -16,18 +16,18 @@ void TranslationWidget::SetupUi() {
 
   title_label_ = new QLabel("📝 Translation Exercise");
   title_label_->setStyleSheet(
-      "font-size: 20px; font-weight: bold; color: #89b4fa;");
+      "font-size: 24px; font-weight: 900; color: #4b4b4b;");
   layout->addWidget(title_label_);
 
   // Timer and progress row
   QHBoxLayout* status_row = new QHBoxLayout();
   timer_label_ = new QLabel("⏱ --:--");
   timer_label_->setStyleSheet(
-      "font-size: 15px; color: #f9e2af; font-weight: bold;");
+      "font-size: 16px; color: #ffc800; font-weight: 900;");
   status_row->addWidget(timer_label_);
 
   wrong_count_label_ = new QLabel("❌ 0 / 3");
-  wrong_count_label_->setStyleSheet("font-size: 14px; color: #f38ba8;");
+  wrong_count_label_->setStyleSheet("font-size: 16px; font-weight: bold; color: #ff4b4b;");
   status_row->addStretch();
   status_row->addWidget(wrong_count_label_);
   layout->addLayout(status_row);
@@ -38,49 +38,50 @@ void TranslationWidget::SetupUi() {
   progress_bar_->setValue(0);
   progress_bar_->setTextVisible(true);
   progress_bar_->setFormat("%v%");
-  progress_bar_->setFixedHeight(22);
+  progress_bar_->setMinimumHeight(24);
+  progress_bar_->setMaximumHeight(24);
   progress_bar_->setStyleSheet(
-      "QProgressBar { background: #313244; border: none; border-radius: 11px; "
-      "color: #cdd6f4; font-size: 11px; text-align: center; }"
-      "QProgressBar::chunk { background: qlineargradient(x1:0, y1:0, x2:1, "
-      "y2:0, stop:0 #89b4fa, stop:1 #74c7ec); border-radius: 11px; }");
+      "QProgressBar { background: #e5e5e5; border: none; border-radius: 12px; "
+      "color: #4b4b4b; font-size: 12px; font-weight: bold; text-align: center; }"
+      "QProgressBar::chunk { background: #58cc02; border-radius: 12px; }");
   layout->addWidget(progress_bar_);
 
   // Instruction
   QLabel* instruction = new QLabel("Translate the following into Russian:");
-  instruction->setStyleSheet("font-size: 13px; color: #a6adc8;");
+  instruction->setStyleSheet("font-size: 16px; font-weight: bold; color: #afafaf; margin-top: 10px;");
   layout->addWidget(instruction);
 
   sentence_label_ = new QLabel();
   sentence_label_->setWordWrap(true);
   sentence_label_->setStyleSheet(
-      "font-size: 22px; font-weight: bold; color: #cdd6f4; "
-      "background: #313244; border-radius: 10px; padding: 18px; "
-      "min-height: 50px;");
+      "font-size: 24px; font-weight: bold; color: #4b4b4b; "
+      "background: #ffffff; border: 2px solid #e5e5e5; border-radius: 12px; padding: 20px; "
+      "min-height: 60px;");
   layout->addWidget(sentence_label_);
 
   answer_input_ = new QLineEdit();
   answer_input_->setPlaceholderText("Type your translation here...");
   answer_input_->setStyleSheet(
-      "QLineEdit { background: #313244; color: #cdd6f4; border: 2px solid "
-      "#45475a; border-radius: 8px; padding: 12px 14px; font-size: 16px; }"
-      "QLineEdit:focus { border-color: #89b4fa; }");
+      "QLineEdit { background: #ffffff; color: #4b4b4b; border: 2px solid "
+      "#e5e5e5; border-radius: 12px; padding: 14px 16px; font-size: 18px; font-weight: bold; }"
+      "QLineEdit:focus { border-color: #1cb0f6; background: #ddf4ff; }");
   layout->addWidget(answer_input_);
 
   feedback_label_ = new QLabel();
   feedback_label_->setWordWrap(true);
-  feedback_label_->setStyleSheet("font-size: 14px; min-height: 24px;");
+  feedback_label_->setStyleSheet("font-size: 16px; font-weight: bold; min-height: 24px;");
   feedback_label_->hide();
   layout->addWidget(feedback_label_);
 
-  submit_button_ = new QPushButton("Submit");
-  submit_button_->setFixedHeight(44);
+  submit_button_ = new QPushButton("CHECK");
+  submit_button_->setFixedHeight(52);
+  submit_button_->setCursor(Qt::PointingHandCursor);
   submit_button_->setStyleSheet(
-      "QPushButton { background: #a6e3a1; color: #1e1e2e; border: none; "
-      "border-radius: 10px; font-size: 15px; font-weight: bold; }"
-      "QPushButton:hover { background: #94e2d5; }"
-      "QPushButton:pressed { background: #89dceb; }"
-      "QPushButton:disabled { background: #45475a; color: #6c7086; }");
+      "QPushButton { background: #58cc02; color: white; border: none; "
+      "border-bottom: 4px solid #58a700; border-radius: 12px; font-size: 18px; font-weight: 900; letter-spacing: 1px; }"
+      "QPushButton:hover { background: #61e002; }"
+      "QPushButton:pressed { background: #58cc02; border-bottom: 2px solid #58a700; margin-top: 2px; }"
+      "QPushButton:disabled { background: #e5e5e5; color: #afafaf; border-bottom: 4px solid #cecece; }");
   layout->addWidget(submit_button_);
 
   layout->addStretch();
@@ -194,7 +195,7 @@ void TranslationWidget::OnSubmit() {
               .arg(task.russian));
     }
     feedback_label_->show();
-    
+
     current_task_++;
     answer_input_->setEnabled(false);
     submit_button_->setEnabled(false);

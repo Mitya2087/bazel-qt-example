@@ -85,6 +85,15 @@ std::vector<TranslationTask> GetTranslationPool(Difficulty difficulty) {
       {"It seems to me that it is going to snow",
        "Мне кажется, что будет снег",
        "Impersonal: мне кажется, что..."},
+      {"Whoever it was, they didn't leave a message",
+       "Кто бы это ни был, он не оставил сообщения",
+       "Whoever it was = Кто бы это ни был"},
+      {"By the time you arrive, we will have already eaten",
+       "К тому времени как вы приедете, мы уже поедим",
+       "By the time = К тому времени как"},
+      {"Only after reading the document did he understand the problem",
+       "Только прочитав документ, он понял проблему",
+       "Gerund construction for priority"},
   };
 
   switch (difficulty) {
@@ -182,6 +191,15 @@ std::vector<GrammarTask> GetGrammarPool(Difficulty difficulty) {
       {"Я не мог не ___ об этом.",
        {"думать", "подумать", "думаю", "думал"}, 0,
        "Не мочь не + infinitive = can't help but."},
+      {"Я бы ___ эту задачу, если бы у меня было время.",
+       {"решил", "решу", "решал", "решать"}, 0,
+       "Subjunctive mood requires past tense verb."},
+      {"Куда бы ты ни ___, я всегда буду с тобой.",
+       {"пошёл", "пойдёшь", "пойти", "шёл"}, 0,
+       "Concessive-conditional clause uses past tense after 'ни'."},
+      {"Он был единственным, кто ___ на этот вопрос.",
+       {"ответил", "ответить", "ответит", "отвечал"}, 0,
+       "Relative pronoun 'кто' takes masculine singular past tense here."},
   };
 
   switch (difficulty) {

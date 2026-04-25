@@ -29,7 +29,7 @@ void MainWindow::SetupUi() {
   QWidget* sidebar = new QWidget();
   sidebar->setFixedWidth(220);
   sidebar->setStyleSheet(
-      "background: #181825; border-right: 1px solid #313244;");
+      "background: #ffffff; border-right: 1px solid #e0e0e0;");
 
   QVBoxLayout* sidebar_layout = new QVBoxLayout(sidebar);
   sidebar_layout->setContentsMargins(16, 20, 16, 20);
@@ -38,25 +38,25 @@ void MainWindow::SetupUi() {
   // App title
   QLabel* app_title = new QLabel("🌍 LinguaLearn");
   app_title->setStyleSheet(
-      "font-size: 18px; font-weight: bold; color: #89b4fa; "
+      "font-size: 20px; font-weight: bold; color: #58cc02; "
       "padding-bottom: 8px; border: none;");
   sidebar_layout->addWidget(app_title);
 
   // Score display
   QWidget* score_card = new QWidget();
   score_card->setStyleSheet(
-      "background: #1e1e2e; border-radius: 10px; border: 1px solid #313244;");
+      "background: #f7f7f7; border-radius: 12px; border: 2px solid #e5e5e5;");
   QVBoxLayout* score_layout = new QVBoxLayout(score_card);
   score_layout->setContentsMargins(12, 10, 12, 10);
 
   QLabel* score_title = new QLabel("⭐ Total Score");
   score_title->setStyleSheet(
-      "font-size: 12px; color: #a6adc8; border: none;");
+      "font-size: 13px; font-weight: bold; color: #afafaf; border: none;");
   score_layout->addWidget(score_title);
 
   score_label_ = new QLabel("0");
   score_label_->setStyleSheet(
-      "font-size: 28px; font-weight: bold; color: #f9e2af; border: none;");
+      "font-size: 28px; font-weight: 900; color: #ffc800; border: none;");
   score_layout->addWidget(score_label_);
 
   sidebar_layout->addWidget(score_card);
@@ -64,57 +64,57 @@ void MainWindow::SetupUi() {
   // Difficulty display
   QWidget* diff_card = new QWidget();
   diff_card->setStyleSheet(
-      "background: #1e1e2e; border-radius: 10px; border: 1px solid #313244;");
+      "background: #f7f7f7; border-radius: 12px; border: 2px solid #e5e5e5;");
   QVBoxLayout* diff_layout = new QVBoxLayout(diff_card);
   diff_layout->setContentsMargins(12, 10, 12, 10);
 
   QLabel* diff_title = new QLabel("📊 Difficulty");
   diff_title->setStyleSheet(
-      "font-size: 12px; color: #a6adc8; border: none;");
+      "font-size: 13px; font-weight: bold; color: #afafaf; border: none;");
   diff_layout->addWidget(diff_title);
 
   difficulty_label_ = new QLabel("🟢 Easy");
   difficulty_label_->setStyleSheet(
-      "font-size: 16px; font-weight: bold; color: #a6e3a1; border: none;");
+      "font-size: 16px; font-weight: 900; color: #58cc02; border: none;");
   diff_layout->addWidget(difficulty_label_);
   sidebar_layout->addWidget(diff_card);
 
   // Separator
   QFrame* separator = new QFrame();
   separator->setFrameShape(QFrame::HLine);
-  separator->setStyleSheet("color: #313244; border: none; max-height: 1px; "
-                           "background: #313244;");
+  separator->setStyleSheet("color: #e5e5e5; border: none; max-height: 2px; "
+                           "background: #e5e5e5;");
   sidebar_layout->addWidget(separator);
 
   // Exercise label
   QLabel* exercises_label = new QLabel("EXERCISES");
   exercises_label->setStyleSheet(
-      "font-size: 11px; font-weight: bold; color: #6c7086; "
-      "letter-spacing: 2px; padding-top: 4px; border: none;");
+      "font-size: 12px; font-weight: 900; color: #afafaf; "
+      "letter-spacing: 1px; padding-top: 4px; border: none;");
   sidebar_layout->addWidget(exercises_label);
 
   // Translation button
   QPushButton* translation_btn = new QPushButton("📝 Translation");
-  translation_btn->setFixedHeight(44);
+  translation_btn->setFixedHeight(48);
   translation_btn->setCursor(Qt::PointingHandCursor);
   translation_btn->setStyleSheet(
-      "QPushButton { background: #313244; color: #cdd6f4; border: none; "
-      "border-radius: 10px; font-size: 14px; font-weight: bold; "
+      "QPushButton { background: #ffffff; color: #4b4b4b; border: 2px solid #e5e5e5; "
+      "border-bottom: 4px solid #e5e5e5; border-radius: 12px; font-size: 15px; font-weight: bold; "
       "text-align: left; padding-left: 14px; }"
-      "QPushButton:hover { background: #45475a; }"
-      "QPushButton:pressed { background: #585b70; }");
+      "QPushButton:hover { background: #f7f7f7; }"
+      "QPushButton:pressed { background: #e5e5e5; border-bottom: 2px solid #e5e5e5; margin-top: 2px; }");
   sidebar_layout->addWidget(translation_btn);
 
   // Grammar button
   QPushButton* grammar_btn = new QPushButton("📖 Grammar");
-  grammar_btn->setFixedHeight(44);
+  grammar_btn->setFixedHeight(48);
   grammar_btn->setCursor(Qt::PointingHandCursor);
   grammar_btn->setStyleSheet(
-      "QPushButton { background: #313244; color: #cdd6f4; border: none; "
-      "border-radius: 10px; font-size: 14px; font-weight: bold; "
+      "QPushButton { background: #ffffff; color: #4b4b4b; border: 2px solid #e5e5e5; "
+      "border-bottom: 4px solid #e5e5e5; border-radius: 12px; font-size: 15px; font-weight: bold; "
       "text-align: left; padding-left: 14px; }"
-      "QPushButton:hover { background: #45475a; }"
-      "QPushButton:pressed { background: #585b70; }");
+      "QPushButton:hover { background: #f7f7f7; }"
+      "QPushButton:pressed { background: #e5e5e5; border-bottom: 2px solid #e5e5e5; margin-top: 2px; }");
   sidebar_layout->addWidget(grammar_btn);
 
   sidebar_layout->addStretch();
@@ -122,7 +122,7 @@ void MainWindow::SetupUi() {
   // Help hint
   QLabel* help_hint = new QLabel("Press H for hint");
   help_hint->setStyleSheet(
-      "font-size: 11px; color: #585b70; font-style: italic; border: none;");
+      "font-size: 12px; font-weight: bold; color: #afafaf; border: none;");
   help_hint->setAlignment(Qt::AlignCenter);
   sidebar_layout->addWidget(help_hint);
 
@@ -130,7 +130,7 @@ void MainWindow::SetupUi() {
 
   // ── Right content area (stacked widget) ──
   stack_ = new QStackedWidget();
-  stack_->setStyleSheet("background: #1e1e2e;");
+  stack_->setStyleSheet("background: #fafafa; border: none;");
 
   // Welcome page
   welcome_page_ = new QWidget();
@@ -138,13 +138,13 @@ void MainWindow::SetupUi() {
   welcome_layout->setAlignment(Qt::AlignCenter);
 
   QLabel* welcome_emoji = new QLabel("🌍");
-  welcome_emoji->setStyleSheet("font-size: 64px; border: none;");
+  welcome_emoji->setStyleSheet("font-size: 80px; border: none;");
   welcome_emoji->setAlignment(Qt::AlignCenter);
   welcome_layout->addWidget(welcome_emoji);
 
   QLabel* welcome_title = new QLabel("Welcome to LinguaLearn!");
   welcome_title->setStyleSheet(
-      "font-size: 28px; font-weight: bold; color: #cdd6f4; border: none;");
+      "font-size: 32px; font-weight: 900; color: #4b4b4b; border: none;");
   welcome_title->setAlignment(Qt::AlignCenter);
   welcome_layout->addWidget(welcome_title);
 
@@ -152,7 +152,7 @@ void MainWindow::SetupUi() {
       "Learn Russian through interactive exercises.\n"
       "Choose Translation or Grammar from the sidebar to begin!");
   welcome_sub->setStyleSheet(
-      "font-size: 15px; color: #a6adc8; border: none;");
+      "font-size: 16px; font-weight: bold; color: #afafaf; border: none;");
   welcome_sub->setAlignment(Qt::AlignCenter);
   welcome_sub->setWordWrap(true);
   welcome_layout->addWidget(welcome_sub);
@@ -161,7 +161,7 @@ void MainWindow::SetupUi() {
       "\n💡 Tip: Change difficulty via Settings → Difficulty in the menu bar.\n"
       "Press H during an exercise for a hint.");
   welcome_hint->setStyleSheet(
-      "font-size: 13px; color: #585b70; border: none;");
+      "font-size: 14px; font-weight: bold; color: #afafaf; border: none;");
   welcome_hint->setAlignment(Qt::AlignCenter);
   welcome_hint->setWordWrap(true);
   welcome_layout->addWidget(welcome_hint);
@@ -185,20 +185,20 @@ void MainWindow::SetupUi() {
           &MainWindow::OnExerciseFinished);
 
   // Global stylesheet
-  central->setStyleSheet("background: #1e1e2e;");
+  central->setStyleSheet("background: #fafafa; color: #333333;");
 }
 
 void MainWindow::SetupMenuBar() {
   QMenuBar* menu_bar = menuBar();
   menu_bar->setStyleSheet(
-      "QMenuBar { background: #11111b; color: #cdd6f4; font-size: 13px; "
-      "border-bottom: 1px solid #313244; }"
+      "QMenuBar { background: #ffffff; color: #333333; font-size: 13px; "
+      "border-bottom: 1px solid #e0e0e0; }"
       "QMenuBar::item { padding: 6px 14px; }"
-      "QMenuBar::item:selected { background: #313244; }"
-      "QMenu { background: #1e1e2e; color: #cdd6f4; border: 1px solid "
-      "#313244; }"
+      "QMenuBar::item:selected { background: #e0e0e0; }"
+      "QMenu { background: #ffffff; color: #333333; border: 1px solid "
+      "#e0e0e0; }"
       "QMenu::item { padding: 6px 24px; }"
-      "QMenu::item:selected { background: #313244; }");
+      "QMenu::item:selected { background: #e0e0e0; }");
 
   // File menu
   QMenu* file_menu = menu_bar->addMenu("&File");

@@ -16,18 +16,18 @@ void GrammarWidget::SetupUi() {
 
   title_label_ = new QLabel("📖 Grammar Exercise");
   title_label_->setStyleSheet(
-      "font-size: 20px; font-weight: bold; color: #f9e2af;");
+      "font-size: 24px; font-weight: 900; color: #4b4b4b;");
   layout->addWidget(title_label_);
 
   // Timer and progress row
   QHBoxLayout* status_row = new QHBoxLayout();
   timer_label_ = new QLabel("⏱ --:--");
   timer_label_->setStyleSheet(
-      "font-size: 15px; color: #f9e2af; font-weight: bold;");
+      "font-size: 16px; color: #ffc800; font-weight: 900;");
   status_row->addWidget(timer_label_);
 
   wrong_count_label_ = new QLabel("❌ 0 / 3");
-  wrong_count_label_->setStyleSheet("font-size: 14px; color: #f38ba8;");
+  wrong_count_label_->setStyleSheet("font-size: 16px; font-weight: bold; color: #ff4b4b;");
   status_row->addStretch();
   status_row->addWidget(wrong_count_label_);
   layout->addLayout(status_row);
@@ -38,50 +38,51 @@ void GrammarWidget::SetupUi() {
   progress_bar_->setValue(0);
   progress_bar_->setTextVisible(true);
   progress_bar_->setFormat("%v%");
-  progress_bar_->setFixedHeight(22);
+  progress_bar_->setMinimumHeight(24);
+  progress_bar_->setMaximumHeight(24);
   progress_bar_->setStyleSheet(
-      "QProgressBar { background: #313244; border: none; border-radius: 11px; "
-      "color: #cdd6f4; font-size: 11px; text-align: center; }"
-      "QProgressBar::chunk { background: qlineargradient(x1:0, y1:0, x2:1, "
-      "y2:0, stop:0 #f9e2af, stop:1 #fab387); border-radius: 11px; }");
+      "QProgressBar { background: #e5e5e5; border: none; border-radius: 12px; "
+      "color: #4b4b4b; font-size: 12px; font-weight: bold; text-align: center; }"
+      "QProgressBar::chunk { background: #ce82ff; border-radius: 12px; }");
   layout->addWidget(progress_bar_);
 
   // Instruction
   QLabel* instruction = new QLabel("Fill in the blank with the correct word:");
-  instruction->setStyleSheet("font-size: 13px; color: #a6adc8;");
+  instruction->setStyleSheet("font-size: 16px; font-weight: bold; color: #afafaf; margin-top: 10px;");
   layout->addWidget(instruction);
 
   sentence_label_ = new QLabel();
   sentence_label_->setWordWrap(true);
   sentence_label_->setStyleSheet(
-      "font-size: 22px; font-weight: bold; color: #cdd6f4; "
-      "background: #313244; border-radius: 10px; padding: 18px; "
-      "min-height: 50px;");
+      "font-size: 24px; font-weight: bold; color: #4b4b4b; "
+      "background: #ffffff; border: 2px solid #e5e5e5; border-radius: 12px; padding: 20px; "
+      "min-height: 60px;");
   layout->addWidget(sentence_label_);
 
   // Options area
   QWidget* options_container = new QWidget();
   options_layout_ = new QVBoxLayout(options_container);
-  options_layout_->setSpacing(8);
-  options_layout_->setContentsMargins(8, 4, 8, 4);
+  options_layout_->setSpacing(12);
+  options_layout_->setContentsMargins(0, 10, 0, 10);
   layout->addWidget(options_container);
 
   button_group_ = new QButtonGroup(this);
 
   feedback_label_ = new QLabel();
   feedback_label_->setWordWrap(true);
-  feedback_label_->setStyleSheet("font-size: 14px; min-height: 24px;");
+  feedback_label_->setStyleSheet("font-size: 16px; font-weight: bold; min-height: 24px;");
   feedback_label_->hide();
   layout->addWidget(feedback_label_);
 
-  submit_button_ = new QPushButton("Submit");
-  submit_button_->setFixedHeight(44);
+  submit_button_ = new QPushButton("CHECK");
+  submit_button_->setFixedHeight(52);
+  submit_button_->setCursor(Qt::PointingHandCursor);
   submit_button_->setStyleSheet(
-      "QPushButton { background: #f9e2af; color: #1e1e2e; border: none; "
-      "border-radius: 10px; font-size: 15px; font-weight: bold; }"
-      "QPushButton:hover { background: #fab387; }"
-      "QPushButton:pressed { background: #eba0ac; }"
-      "QPushButton:disabled { background: #45475a; color: #6c7086; }");
+      "QPushButton { background: #ce82ff; color: white; border: none; "
+      "border-bottom: 4px solid #a55ee0; border-radius: 12px; font-size: 18px; font-weight: 900; letter-spacing: 1px; }"
+      "QPushButton:hover { background: #d99cff; }"
+      "QPushButton:pressed { background: #ce82ff; border-bottom: 2px solid #a55ee0; margin-top: 2px; }"
+      "QPushButton:disabled { background: #e5e5e5; color: #afafaf; border-bottom: 4px solid #cecece; }");
   layout->addWidget(submit_button_);
 
   layout->addStretch();
@@ -150,10 +151,11 @@ void GrammarWidget::ShowTask() {
   for (int i = 0; i < task.options.size(); ++i) {
     QRadioButton* radio = new QRadioButton(task.options[i]);
     radio->setStyleSheet(
-        "QRadioButton { color: #cdd6f4; font-size: 15px; "
-        "padding: 8px 12px; background: #313244; border-radius: 8px; }"
-        "QRadioButton:hover { background: #45475a; }"
-        "QRadioButton::indicator { width: 18px; height: 18px; }");
+        "QRadioButton { color: #4b4b4b; font-size: 16px; font-weight: bold; "
+        "padding: 12px 16px; background: #ffffff; border: 2px solid #e5e5e5; border-radius: 12px; }"
+        "QRadioButton:hover { background: #f7f7f7; }"
+        "QRadioButton::indicator { width: 18px; height: 18px; }"
+        "QRadioButton:checked { border: 2px solid #ce82ff; background: #f3e5ff; color: #ce82ff; }");
     options_layout_->addWidget(radio);
     button_group_->addButton(radio, i);
     option_buttons_.append(radio);
@@ -215,7 +217,7 @@ void GrammarWidget::OnSubmit() {
               .arg(task.options[task.correct_index]));
     }
     feedback_label_->show();
-    
+
     // Move to next task after wrong answer on grammar
     current_task_++;
     for (auto* btn : option_buttons_) {
